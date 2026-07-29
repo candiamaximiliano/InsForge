@@ -16,6 +16,7 @@ jobs:
   sync:
     name: Merge upstream main into fork
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout fork main
