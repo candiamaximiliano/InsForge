@@ -15,7 +15,10 @@ services:
     ports:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     networks:
-      - insforge-network
+      insforge-network: {}
+      dokploy-network:
+        aliases:
+          - content-review-postgres
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
@@ -213,3 +216,5 @@ volumes:
 networks:
   insforge-network:
     driver: bridge
+  dokploy-network:
+    external: true
